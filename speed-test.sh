@@ -17,7 +17,7 @@ show_menu () {
          bgred=`echo "\033[41m"`
          fgred=`echo "\033[31m"`
 
-	 printf "${menu}${number} 1)${menu} Проверить доступность удаленной площадке ${normal}\n"
+	 printf "${menu}${number} 1)${menu} Проверить доступность удаленной площадки ${normal}\n"
          printf "${menu}${number} 2)${menu} Запустить замеры скорости ${normal}\n"
          printf "${menu}${number} 3)${menu} Запустить iperf3 сервер ${normal}\n"
          printf "${menu}${number} 4)${menu} Остановить iperf3 сервер ${normal}\n"
@@ -37,7 +37,7 @@ function_option_picked () {
 }
 
 function_access_ip_address () {
-        echo -e '\n------------------------\n##########Проверка доступности удфленной площадке############\n' && sleep 1
+        echo -e '\n------------------------\n##########Проверка доступности удаленной площадки############\n' && sleep 1
         read -p 'Введите ip addrss интерфейса ноутбука на удаленной площадке:
 Пример [192.168.0.10]:   ' IP
         if ping -c 5 $IP 2>>$error_log 1>>$output_log ; then echo "Узел доступен" && echo "Трассировка до узла" && tracepath $IP 2>>$error_log 1>>$output_log ; else echo "Узел не доступен"; fi 
@@ -188,8 +188,8 @@ while :
     else
       case $opt in
         1) clear;
-            function_option_picked "Проверить доступность удаленной площадке";
-            printf "Началась проверка\n" && logic_1 && printf "Проверка завершена.Логи можно посмотреть в \n $output_log\n $error_log\n\n";
+            function_option_picked "Проверить доступность удаленной площадки";
+            printf "Началась проверка\n" && logic_1 && printf "Проверка завершена. Логи можно посмотреть в \n $output_log\n $error_log\n\n";
             show_menu;
         ;;
         2) clear;
